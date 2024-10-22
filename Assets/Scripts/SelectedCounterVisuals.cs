@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class SelectedCounterVisuals : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private ClearCounter clearCounter;
+    [SerializeField] private GameObject visualGameObject;
+    private void Start()
     {
-        
+        PlayerController.Instance.onSelectedCounterChanged += Player_onSelectedCounterChanged;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Player_onSelectedCounterChanged(object sender, PlayerController.onSelectedCounterChangedEventArgs e)
     {
-        
+        if(e.selectedCounter == clearCounter) //assigning in inspector what is clear counter
+        {
+            Show();
+        }
+        else
+        {
+            Hide();
+        }
+    }
+    private void Show()
+    {
+        visualGameObject.SetActive(true);
+    }
+    private void Hide()
+    {
+        visualGameObject?.SetActive(false);
     }
 }

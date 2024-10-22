@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //public static PlayerController instance;
+    public static PlayerController Instance { get; private set; } //does the same thing as separate functions 
+    //VS automatically creates get and set functions u dont need to create them seperately
+
 
     public event EventHandler <onSelectedCounterChangedEventArgs> onSelectedCounterChanged;
     public class onSelectedCounterChangedEventArgs : EventArgs
@@ -21,6 +25,15 @@ public class PlayerController : MonoBehaviour
     private bool isWalking;
     private Vector3 lastInteractDir; //to not stop interact when w key is not pressed
     private ClearCounter selectedCounter;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.LogError("we have more than 1 player instance");
+        }
+        Instance = this; //singleton pattern
+    }
     private void Start()
     {
         gameInput.OnInteractAction += GameInput_OnInteractAction; //listening to input

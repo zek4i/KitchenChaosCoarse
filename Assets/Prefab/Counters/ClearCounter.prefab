@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2585220794904668066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5456170661451998420}
+  m_Layer: 6
+  m_Name: CounterTopPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5456170661451998420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585220794904668066}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6159922293256535159}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7520288542372146708
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,6 +64,7 @@ Transform:
   m_Children:
   - {fileID: 340447750929424740}
   - {fileID: 1597901062760823594}
+  - {fileID: 5456170661451998420}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!65 &7366305240234800587
@@ -68,6 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d421f22045ef8b546acf1ec6ba3da2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kitchenObjectSO: {fileID: 11400000, guid: b23292172ee41a0469aeff8f330caf25, type: 2}
+  counterTopPoint: {fileID: 5456170661451998420}
 --- !u!1001 &2998572216225800065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -194,6 +228,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df50b5f4a24b2714c8623f2147a417b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clearCounter: {fileID: 2002041803703463381}
+  visualGameObject: {fileID: 6652636346138746062}
+--- !u!1 &6652636346138746062 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8489276541531669327, guid: 0004cb1e11ad014419b943c7da960724,
+    type: 3}
+  m_PrefabInstance: {fileID: 2998572216225800065}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4253773453717915087
 PrefabInstance:
   m_ObjectHideFlags: 0
