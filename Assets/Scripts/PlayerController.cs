@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IKitchenObjectParent
 {
     //public static PlayerController instance;
     public static PlayerController Instance { get; private set; } //does the same thing as separate functions 
@@ -20,11 +20,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask countersLayerMask;
+    [SerializeField] private Transform kitchenObjectHoldPoint;
 
 
     private bool isWalking;
     private Vector3 lastInteractDir; //to not stop interact when w key is not pressed
     private ClearCounter selectedCounter;
+    private KitchenObject kitchenObject;
 
     private void Awake()
     {
@@ -43,7 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         if(selectedCounter != null) //if there is a selected counter
         {
-            selectedCounter.Interact();
+            selectedCounter.Interact(this);
         }
     }
 
@@ -158,5 +160,26 @@ public class PlayerController : MonoBehaviour
             selectedCounter = selectedCounter
         });
 
+    }
+
+    public Transform GetKitchenObjectFollowtransform()
+    {
+        return kitchenObjectHoldPoint;
+    }
+    public void SetKitchenObject(KitchenObject kitchenObject)
+    {
+        this.kitchenObject = kitchenObject;
+    }
+    public KitchenObject GetKitchenObject()
+    {
+        return kitchenObject;
+    }
+    public void ClearKitchenObject()
+    {
+        kitchenObject = null;
+    }
+    public bool HasKitchenObject() //checking if this counter has anything on top
+    {
+        return kitchenObject != null;
     }
 }
