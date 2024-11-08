@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour, IKitchenObjectParent
     public event EventHandler <onSelectedCounterChangedEventArgs> onSelectedCounterChanged;
     public class onSelectedCounterChangedEventArgs : EventArgs
     {
-        public ClearCounter selectedCounter; //using the same name dont be confused
+        public BaseCounter selectedCounter; //using the same name dont be confused
     }
 
 
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour, IKitchenObjectParent
 
     private bool isWalking;
     private Vector3 lastInteractDir; //to not stop interact when w key is not pressed
-    private ClearCounter selectedCounter;
+    private BaseCounter selectedCounter;
     private KitchenObject kitchenObject;
 
     private void Awake()
@@ -75,12 +75,12 @@ public class PlayerController : MonoBehaviour, IKitchenObjectParent
         // the out gives the output now instead of just returning boolean value like last time
         //layerMasks are used to detect only the obj of a certain layer like how we only iteract with counters layer here
         { 
-            if(raycastHit.transform.TryGetComponent(out ClearCounter clearCounter))//to identify the object that was hit
+            if(raycastHit.transform.TryGetComponent(out BaseCounter baseCounter))//to identify the object that was hit
             {// TryGetComponent automatically checks for the null value
                 //has counter
-                if(clearCounter != selectedCounter)
+                if(baseCounter != selectedCounter)
                 {
-                    SetSelectedCounter(clearCounter);
+                    SetSelectedCounter(baseCounter);
 
                 }
             }
@@ -148,9 +148,9 @@ public class PlayerController : MonoBehaviour, IKitchenObjectParent
 
         float rotateSpeed = 10f;
         transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
-    }
+    } 
 
-    private void SetSelectedCounter(ClearCounter selectedCounter)
+    private void SetSelectedCounter(BaseCounter selectedCounter)
     {   
         this.selectedCounter = selectedCounter;
 

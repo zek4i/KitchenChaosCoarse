@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ClearCounter : MonoBehaviour, IKitchenObjectParent
+public class ClearCounter : BaseCounter, IKitchenObjectParent
 {
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
     [SerializeField] private Transform counterTopPoint;
@@ -11,7 +11,7 @@ public class ClearCounter : MonoBehaviour, IKitchenObjectParent
 
     private KitchenObject kitchenObject;
     
-    public void Interact(PlayerController player)
+    public override void Interact(PlayerController player)
     {
         if (kitchenObject == null) //if there is no kitchenObject existing
         {

@@ -135,7 +135,7 @@ PrefabInstance:
     - target: {fileID: 7520288542372146708, guid: 655923ab08a46df4891800c3dfc4a43c,
         type: 3}
       propertyPath: m_Name
-      value: ClearCounterNEW
+      value: ClearCounter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -312,8 +312,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df50b5f4a24b2714c8623f2147a417b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearCounter: {fileID: 1393810140877671842}
-  visualGameObject: {fileID: 3056074420998714601}
+  baseCounter: {fileID: 1393810140877671842}
+  visualGameObjectArray:
+  - {fileID: 3056074420998714601}
 --- !u!4 &6924091398260593421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4589716710238282923, guid: 0004cb1e11ad014419b943c7da960724,
