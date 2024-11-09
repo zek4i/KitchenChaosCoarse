@@ -39,6 +39,15 @@ public class PlayerController : MonoBehaviour, IKitchenObjectParent
     private void Start()
     {
         gameInput.OnInteractAction += GameInput_OnInteractAction; //listening to input
+        gameInput.OnInteractAlternateAction += GameInput_OnInteractAlternateAction;
+    }
+
+    private void GameInput_OnInteractAlternateAction(object sender, EventArgs e)
+    {
+        if (selectedCounter != null) //if there is a selected counter
+        {
+            selectedCounter.InteractAlternate(this);
+        }
     }
 
     private void GameInput_OnInteractAction(object sender, System.EventArgs e)
@@ -112,7 +121,7 @@ public class PlayerController : MonoBehaviour, IKitchenObjectParent
 
             // Attempt only X movement
             Vector3 moveDirX = new Vector3(moveDir.x, 0, 0).normalized;
-            canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
+            canMove = moveDir.x != 0 && !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
 
             if (canMove)
             {
@@ -125,7 +134,7 @@ public class PlayerController : MonoBehaviour, IKitchenObjectParent
 
                 // Attempt only Z movement
                 Vector3 moveDirZ = new Vector3(0, 0, moveDir.z).normalized; //so the player moves at same speed diagonally as well
-                canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirZ, moveDistance);
+                canMove = moveDir.z != 0 && !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirZ, moveDistance);
 
                 if (canMove)
                 {

@@ -9,12 +9,19 @@ public class GameInput : MonoBehaviour
 
 
     public event EventHandler OnInteractAction; // player is accessing this
+    public event EventHandler OnInteractAlternateAction;
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable(); // Enable the Player action map so inputs can be read
 
         playerInputActions.Player.Interact.performed += Interact_performed; //performed is an event and Interact_performed is func name
+        playerInputActions.Player.InteractAlternate.performed += InteractAlternate_performed;
+    }
+
+    private void InteractAlternate_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        OnInteractAlternateAction?.Invoke(this, EventArgs.Empty);
     }
 
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
